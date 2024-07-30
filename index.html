@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta content="width=device-width,initial-scale=1" name="viewport">
+	<title>Europe great dane 1900-1980</title>
+	<meta content="description" name="description">
+<!--	<link href="static/favicon.ico" rel="shortcut icon" type="image/x-icon">-->
+	<link href="./css/eu-gallery.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/exif-js/2.3.0/exif.min.js"></script>
+</head>
+</html>
+<body>
+<div class="swipe" id="app">
+	<div class="sw__left">
+        <div class="f-carousel" id="Carousel-1">
+            <div class="f-carousel__slide" data-fancybox="gallery" data-src="./eu-gallery/CH ATTILA Von Der STADT HAMBURG.jpg">
+                <div class="sw__img"><img src="./eu-gallery/CH ATTILA Von Der STADT HAMBURG.jpg" data-xpcomment="Комментарий 1"></div>
+                <span class="caption"></span>
+            </div>
+            <div class="f-carousel__slide" data-fancybox="gallery" data-src="./eu-gallery/CH AVIVA VON HARLEKIN.jpg">
+                <div class="sw__img"><img src="./eu-gallery/CH AVIVA VON HARLEKIN.jpg" data-xpcomment="Комментарий 2"></div>
+                <span class="caption"></span>
+            </div>
+            <div class="f-carousel__slide" data-fancybox="gallery" data-src="./eu-gallery/CH BENTO VON SEEACHER.jpg">
+                <div class="sw__img"><img src="./eu-gallery/CH BENTO VON SEEACHER.jpg" data-xpcomment="Комментарий 3"></div>
+                <span class="caption"></span>
+            </div>
+            <div class="f-carousel__slide" data-fancybox="gallery" data-src="./eu-gallery/CH BART Von MARIENWARD.jpg">
+                <div class="sw__img"><img src="./eu-gallery/CH BART Von MARIENWARD.jpg" data-xpcomment="Комментарий 4"></div>
+                <span class="caption"></span>
+            </div>
+            <div class="f-carousel__slide" data-fancybox="gallery" data-src="./eu-gallery/CH ATTILA Von Der STADT HAMBURG.jpg">
+                <div class="sw__img"><img src="./eu-gallery/CH BEAUTY DE PULCKERRIMI.jpg" data-xpcomment="Комментарий 5"></div>
+                <span class="caption"></span>
+            </div>    
+        </div>
+    </div>
+
+	
+	<div class="sw__right">
+		<div class="sw__right-row">
+            <div class="f-carousel" id="Carousel-2"></div>
+		</div>
+		<div class="sw__right-row">
+            <div class="f-carousel" id="Carousel-3"></div>
+        </div>
+	</div>
+</div>
+<script src="./js/swiper.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const slides = document.querySelectorAll(".f-carousel__slide");
+
+        slides.forEach(slide => {
+            const img = slide.querySelector("img");
+            const fileName = decodeURIComponent(img.src.split('/').pop()); // Извлечение и декодирование имени файла из пути
+            const xpComment = img.getAttribute('data-xpcomment') || "No XPComment available"; // Получение XPComment
+
+            const caption = slide.querySelector(".caption");
+            caption.innerHTML = `${fileName}<br>${xpComment}`;
+        });
+    });
+</script>
+</body>
