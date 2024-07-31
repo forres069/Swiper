@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function() {
     slides.forEach(slide => {
         const img = slide.querySelector("img");
         const fileName = decodeURIComponent(img.src.split('/').pop());
-        const xpComment = EXIF.getData(imageFile, function() {
+        const xpComment = EXIF.getData(img, function() {
             const xpComment = EXIF.getTag(this, 'XPComment');
             console.log("XPComment:", xpComment);
         });
