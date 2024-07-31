@@ -3,8 +3,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
     slides.forEach(slide => {
         const img = slide.querySelector("img");
-        const fileName = decodeURIComponent(img.src.split('/').pop()); // Извлечение и декодирование имени файла из пути
-        const xpComment = img.getAttribute('data-xpcomment') || "No XPComment available";
+        const fileName = decodeURIComponent(img.src.split('/').pop());
+        const xpComment = EXIF.getData(imageFile, function() {
+            const xpComment = EXIF.getTag(this, 'XPComment');
+            console.log("XPComment:", xpComment);
+        });
 
         const caption = slide.querySelector(".caption");
         caption.innerHTML = `${fileName}<br>${xpComment}`;
